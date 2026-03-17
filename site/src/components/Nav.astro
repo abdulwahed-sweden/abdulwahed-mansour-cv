@@ -10,50 +10,72 @@ const allCvs = await getCollection("cvs");
 const sorted = allCvs.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<header class="no-print fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-[0_2px_15px_rgba(0,0,0,0.08)]">
+<header class="no-print fixed top-0 w-full z-50" style="background: var(--bg-glass); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-subtle);">
   <div class="max-w-[1200px] mx-auto px-5">
     <nav class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href="/" class="text-xl font-bold text-primary no-underline">
-        Abdulwahed<span class="text-accent">.</span>
+      <a href="/" class="text-xl font-bold no-underline" style="color: var(--color-text-primary);">
+        Abdulwahed<span style="color: var(--color-primary);">.</span>
       </a>
 
-      <!-- Desktop nav -->
-      <div class="hidden lg:flex items-center gap-1">
-        {sorted.map((cv) => {
-          const isActive = currentSlug === cv.data.slug;
-          return (
-            <a
-              href={`/cv/${cv.data.slug}/`}
-              class:list={[
-                "relative text-[13px] font-medium px-3 py-2 rounded-lg transition-all",
-                isActive
-                  ? "text-primary bg-primary/5"
-                  : "text-text-muted hover:text-text-primary hover:bg-surface-2",
-              ]}
-              title={cv.data.title}
-            >
-              {cv.data.short}
-            </a>
-          );
-        })}
-      </div>
+      <div class="flex items-center gap-2">
+        <!-- Desktop nav -->
+        <div class="hidden lg:flex items-center gap-0.5">
+          {sorted.map((cv) => {
+            const isActive = currentSlug === cv.data.slug;
+            return (
+              <a
+                href={`/cv/${cv.data.slug}/`}
+                class:list={[
+                  "text-[13px] font-semibold px-3 py-1.5 rounded-lg transition-all",
+                  isActive
+                    ? "text-white"
+                    : "hover:text-[var(--color-primary-700)]",
+                ]}
+                style={isActive
+                  ? `background: var(--gradient-primary);`
+                  : `color: var(--color-text-muted);`
+                }
+                title={cv.data.title}
+              >
+                {cv.data.short}
+              </a>
+            );
+          })}
+        </div>
 
-      <!-- Mobile -->
-      <button
-        id="mobile-menu-btn"
-        class="lg:hidden text-text-muted hover:text-text-primary p-2 transition-colors"
-        aria-label="Menu"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+        <!-- Dark mode toggle -->
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-lg transition-colors"
+          style="color: var(--color-text-muted);"
+          aria-label="Toggle dark mode"
+        >
+          <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moon-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 rounded-lg transition-colors"
+          style="color: var(--color-text-muted);"
+          aria-label="Menu"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </nav>
   </div>
 
   <!-- Mobile dropdown -->
-  <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-border">
+  <div id="mobile-menu" class="lg:hidden hidden" style="background: var(--bg-card); border-top: 1px solid var(--border-subtle);">
     <div class="max-w-[1200px] mx-auto px-5 py-3 grid grid-cols-2 gap-1">
       {sorted.map((cv) => {
         const isActive = currentSlug === cv.data.slug;
@@ -61,11 +83,13 @@ const sorted = allCvs.sort((a, b) => a.data.order - b.data.order);
           <a
             href={`/cv/${cv.data.slug}/`}
             class:list={[
-              "text-sm font-medium px-3 py-2.5 rounded-lg transition-colors",
-              isActive
-                ? "text-primary bg-primary/5"
-                : "text-text-muted hover:text-text-primary hover:bg-surface-2",
+              "text-sm font-semibold px-3 py-2.5 rounded-lg transition-all",
+              isActive ? "text-white" : "",
             ]}
+            style={isActive
+              ? `background: var(--gradient-primary);`
+              : `color: var(--color-text-muted);`
+            }
           >
             {cv.data.short}
           </a>
@@ -75,8 +99,39 @@ const sorted = allCvs.sort((a, b) => a.data.order - b.data.order);
   </div>
 </header>
 
-<script>
-  const btn = document.getElementById("mobile-menu-btn");
-  const menu = document.getElementById("mobile-menu");
-  btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+<script is:inline>
+  // Mobile menu toggle
+  document.getElementById("mobile-menu-btn")?.addEventListener("click", () => {
+    document.getElementById("mobile-menu")?.classList.toggle("hidden");
+  });
+
+  // Dark mode toggle
+  const toggle = document.getElementById("theme-toggle");
+  const sunIcon = document.getElementById("sun-icon");
+  const moonIcon = document.getElementById("moon-icon");
+
+  function updateIcons() {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    if (isDark) {
+      sunIcon?.classList.remove("hidden");
+      moonIcon?.classList.add("hidden");
+    } else {
+      sunIcon?.classList.add("hidden");
+      moonIcon?.classList.remove("hidden");
+    }
+  }
+
+  updateIcons();
+
+  toggle?.addEventListener("click", () => {
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    if (isDark) {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    }
+    updateIcons();
+  });
 </script>
