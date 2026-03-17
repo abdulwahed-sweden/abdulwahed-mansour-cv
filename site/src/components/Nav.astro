@@ -1,0 +1,133 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  currentSlug?: string;
+}
+
+const { currentSlug } = Astro.props;
+const allCvs = await getCollection("cvs");
+const sorted = allCvs.sort((a, b) => a.data.order - b.data.order);
+
+const iconMap: Record<string, string> = {
+  terminal: "M4 17l6-5-6-5M12 19h8",
+  cpu: "M9 3v2M15 3v2M9 19v2M15 19v2M3 9h2M3 15h2M19 9h2M19 15h2M7 7h10v10H7z",
+  shield: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
+  search: "M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5zM16 16l4.5 4.5",
+  layers: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
+  code: "M16 18l6-6-6-6M8 6l-6 6 6 6",
+  server: "M2 4h20v6H2zM2 14h20v6H2zM6 7h.01M6 17h.01",
+  zap: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+  eye: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8zM12 9a3 3 0 100 6 3 3 0 000-6z",
+  brain: "M12 2a7 7 0 017 7v1a5 5 0 01-3 4.5V18a3 3 0 01-3 3h-2a3 3 0 01-3-3v-3.5A5 5 0 015 10V9a7 7 0 017-7z",
+};
+---
+
+<nav class="no-print fixed top-0 left-0 right-0 z-50 bg-surface-0/80 backdrop-blur-xl border-b border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Desktop -->
+    <div class="hidden lg:flex items-center h-14 gap-1">
+      <a
+        href="/"
+        class:list={[
+          "flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors mr-4",
+          !currentSlug
+            ? "bg-surface-3 text-text-primary"
+            : "text-text-muted hover:text-text-primary hover:bg-surface-2",
+        ]}
+      >
+        <span class="font-mono text-accent text-xs">AM</span>
+        <span class="hidden xl:inline">Portfolio</span>
+      </a>
+      {sorted.map((cv) => {
+        const isActive = currentSlug === cv.data.slug;
+        return (
+          <a
+            href={`/cv/${cv.data.slug}/`}
+            class:list={[
+              "group flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap",
+              isActive
+                ? "bg-surface-3 text-text-primary"
+                : "text-text-muted hover:text-text-secondary hover:bg-surface-1",
+            ]}
+            title={cv.data.title}
+          >
+            <svg
+              class:list={[
+                "w-3.5 h-3.5 flex-shrink-0 transition-colors",
+                isActive ? "text-accent" : "text-text-muted group-hover:text-text-secondary",
+              ]}
+              style={isActive ? `color: ${cv.data.accent}` : ""}
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d={iconMap[cv.data.icon] || iconMap.code} />
+            </svg>
+            <span>{cv.data.short}</span>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Mobile -->
+    <div class="lg:hidden flex items-center justify-between h-12">
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-text-primary">
+        <span class="font-mono text-accent text-xs">AM</span>
+        Portfolio
+      </a>
+      <button
+        id="mobile-menu-btn"
+        class="p-2 text-text-muted hover:text-text-primary transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-border bg-surface-0/95 backdrop-blur-xl">
+    <div class="px-4 py-3 grid grid-cols-2 gap-1.5">
+      {sorted.map((cv) => {
+        const isActive = currentSlug === cv.data.slug;
+        return (
+          <a
+            href={`/cv/${cv.data.slug}/`}
+            class:list={[
+              "flex items-center gap-2 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors",
+              isActive
+                ? "bg-surface-3 text-text-primary"
+                : "text-text-muted hover:text-text-secondary hover:bg-surface-1",
+            ]}
+          >
+            <svg
+              class="w-3.5 h-3.5 flex-shrink-0"
+              style={isActive ? `color: ${cv.data.accent}` : ""}
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d={iconMap[cv.data.icon] || iconMap.code} />
+            </svg>
+            {cv.data.short}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+</script>

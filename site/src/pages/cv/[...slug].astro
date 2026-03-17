@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const cvs = await getCollection("cvs");
+  return cvs.map((cv) => ({
+    params: { slug: cv.data.slug },
+    props: { cv },
+  }));
+}
+
+const { cv } = Astro.props;
+const { Content } = await render(cv);
+
+const allCvs = await getCollection("cvs");
+const sorted = allCvs.sort((a, b) => a.data.order - b.data.order);
+const currentIndex = sorted.findIndex((c) => c.data.slug === cv.data.slug);
+const prevCv = currentIndex > 0 ? sorted[currentIndex - 1] : null;
+const nextCv = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
+
+const keywordList = cv.data.keywords.split(", ");
+---
+
+<BaseLayout
+  title={cv.data.title}
+  description={cv.data.description}
+  keywords={cv.data.keywords}
+  slug={cv.data.slug}
+  currentSlug={cv.data.slug}
+>
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <!-- Header card -->
+    <header class="mb-10 animate-in">
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 text-xs text-text-muted font-mono mb-6">
+        <a href="/" class="hover:text-text-secondary transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-text-secondary">{cv.data.short}</span>
+      </div>
+
+      <div class="bg-surface-1 border border-border rounded-xl p-6 sm:p-8">
+        <!-- Accent bar -->
+        <div class="w-12 h-1 rounded-full mb-5" style={`background: ${cv.data.accent}`}></div>
+
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div>
+            <p class="text-xs font-mono text-text-muted mb-2">
+              Profile {String(cv.data.order).padStart(2, "0")} / {sorted.length}
+            </p>
+            <h1 class="text-2xl sm:text-3xl font-bold text-text-primary tracking-tight mb-2">
+              {cv.data.title}
+            </h1>
+            <p class="text-sm text-text-muted max-w-lg">{cv.data.description}</p>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex items-center gap-2 flex-shrink-0">
+            <button
+              onclick="window.print()"
+              class="no-print inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-2 border border-border rounded-lg text-xs font-medium text-text-muted hover:text-text-secondary hover:border-border-light transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+              </svg>
+              Print
+            </button>
+            <a
+              href="mailto:abdulwahed.sweden@gmail.com"
+              class="no-print inline-flex items-center gap-1.5 px-3 py-1.5 bg-accent text-surface-0 rounded-lg text-xs font-semibold hover:opacity-90 transition-opacity"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Contact
+            </a>
+          </div>
+        </div>
+
+        <!-- Keywords -->
+        <div class="flex flex-wrap gap-1.5 mt-5 pt-5 border-t border-border">
+          {keywordList.map((kw: string) => (
+            <span
+              class="px-2 py-0.5 text-[10px] font-mono rounded-md border"
+              style={`background: ${cv.data.accent}10; border-color: ${cv.data.accent}30; color: ${cv.data.accent}`}
+            >
+              {kw}
+            </span>
+          ))}
+        </div>
+      </div>
+    </header>
+
+    <!-- CV Content -->
+    <article class="cv-prose animate-in" style="animation-delay: 0.15s">
+      <Content />
+    </article>
+
+    <!-- Prev/Next navigation -->
+    <nav class="no-print mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4 animate-in" style="animation-delay: 0.2s">
+      {prevCv ? (
+        <a
+          href={`/cv/${prevCv.data.slug}/`}
+          class="group bg-surface-1 border border-border rounded-xl p-5 hover:border-border-light hover:bg-surface-2 transition-all"
+        >
+          <div class="text-xs text-text-muted mb-1 font-mono">← Previous</div>
+          <div class="text-sm font-semibold text-text-secondary group-hover:text-text-primary transition-colors">
+            {prevCv.data.short}
+          </div>
+        </a>
+      ) : (
+        <div />
+      )}
+      {nextCv && (
+        <a
+          href={`/cv/${nextCv.data.slug}/`}
+          class="group bg-surface-1 border border-border rounded-xl p-5 hover:border-border-light hover:bg-surface-2 transition-all text-right"
+        >
+          <div class="text-xs text-text-muted mb-1 font-mono">Next →</div>
+          <div class="text-sm font-semibold text-text-secondary group-hover:text-text-primary transition-colors">
+            {nextCv.data.short}
+          </div>
+        </a>
+      )}
+    </nav>
+  </div>
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  keywords: string;
+  slug?: string;
+  type?: string;
+}
+
+const { title, description, keywords, slug = "", type = "profile" } = Astro.props;
+const siteUrl = "https://abdulwahed-mansour.dev";
+const canonicalUrl = slug ? `${siteUrl}/cv/${slug}/` : `${siteUrl}/`;
+const fullTitle = slug
+  ? `${title} — Abdulwahed Mansour`
+  : "Abdulwahed Mansour — Security Researcher & Systems Engineer";
+---
+
+<!-- Primary Meta -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="Abdulwahed Mansour" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:site_name" content="Abdulwahed Mansour" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+
+<!-- Profile-specific OG -->
+{type === "profile" && (
+  <>
+    <meta property="profile:first_name" content="Abdulwahed" />
+    <meta property="profile:last_name" content="Mansour" />
+  </>
+)}
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Preconnect for fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
