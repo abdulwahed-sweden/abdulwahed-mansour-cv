@@ -2,6 +2,7 @@
 
 **Security Researcher · Systems Engineer · Protocol Architect**
 
+[![Live Demo](https://img.shields.io/badge/Live-Hugging%20Face%20Spaces-ffd21e?style=flat-square&logo=huggingface)](https://huggingface.co/spaces/abdulwahed-sweden/abdulwahed-cv)
 [![Portfolio](https://img.shields.io/badge/Portfolio-abdulwahed--mansour.dev-2563eb?style=flat-square)](https://abdulwahed-mansour.dev)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-abdulwahed--sweden-0a66c2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/abdulwahed-sweden/)
 [![GitHub](https://img.shields.io/badge/GitHub-abdulwahed--sweden-181717?style=flat-square&logo=github)](https://github.com/abdulwahed-sweden)
