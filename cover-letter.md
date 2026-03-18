@@ -2,9 +2,9 @@
 
 **Security Researcher · Systems Engineer · Protocol Architect**
 
-Mejramvagen 37, 145 73 Norsborg, Stockholm, Sweden
+Mejramvägen 37, 145 73 Norsborg, Stockholm, Sweden
 +46 76 930 8145 | abdulwahed.sweden@gmail.com
-GitHub: github.com/abdulwahed-sweden | LinkedIn: linkedin.com/in/abdulwahed-mansour
+[GitHub](https://github.com/abdulwahed-sweden) | [LinkedIn](https://www.linkedin.com/in/abdulwahed-sweden/) | [Portfolio](https://abdulwahed-mansour.dev)
 
 ---
 
@@ -18,7 +18,7 @@ My work spans security research, Rust systems engineering, Python backend archit
 
 On the engineering side, I have built and maintain 21+ repositories totaling 208,000+ lines of production code with 5,700+ tests. My recent work includes high-performance async services in Rust (Tokio/Axum), Python backends (FastAPI/Django), smart contract security tooling (Foundry/Solidity), and AI-integrated systems using the Model Context Protocol (MCP). Several of these projects are hosted in private repositories due to their sensitive nature and are available for review upon request.
 
-Jag ser fram emot att bidra till ert team och vaxa tillsammans med er organisation. Tack for att ni tar er tid att granska min ansokan!
+Jag ser fram emot att bidra till ert team och växa tillsammans med er organisation. Tack för att ni tar er tid att granska min ansökan!
 
 I would welcome the chance to discuss how my experience aligns with your needs.
 
@@ -43,4 +43,4 @@ Security Researcher & Systems Engineer
 | 09 | Blockchain Forensics Specialist |
 | 10 | AI-Integrated Backend Engineer |
 
-**Portfolio:** abdulwahed-mansour.dev
+**Portfolio:** [abdulwahed-mansour.dev](https://abdulwahed-mansour.dev)

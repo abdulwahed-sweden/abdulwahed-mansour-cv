@@ -2,7 +2,7 @@
 
 **Full-Stack Web Developer**
 
-Stockholm, Sweden | abdulwahed.sweden@gmail.com | [LinkedIn](https://linkedin.com/in/abdulwahed-mansour) | [GitHub](https://github.com/abdulwahed-sweden)
+Stockholm, Sweden | abdulwahed.sweden@gmail.com | [LinkedIn](https://linkedin.com/in/abdulwahed-sweden) | [GitHub](https://github.com/abdulwahed-sweden)
 
 ---
 

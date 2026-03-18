@@ -2,7 +2,7 @@
 
 **DeFi Protocol Engineer — Islamic Finance & Ethical DeFi**
 
-Stockholm, Sweden | abdulwahed.sweden@gmail.com | [LinkedIn](https://linkedin.com/in/abdulwahed-mansour) | [GitHub](https://github.com/abdulwahed-sweden)
+Stockholm, Sweden | abdulwahed.sweden@gmail.com | [LinkedIn](https://linkedin.com/in/abdulwahed-sweden) | [GitHub](https://github.com/abdulwahed-sweden)
 
 ---
 

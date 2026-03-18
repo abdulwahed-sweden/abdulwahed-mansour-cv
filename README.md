@@ -1,22 +1,37 @@
-# Abdulwahed Mansour — Portfolio & CV Collection
+# Abdulwahed Mansour
 
-Multi-variant CV portfolio with a static website, cover letter generator, and 10 role-specific profiles. Each CV targets a specific specialization backed by real projects from [github.com/abdulwahed-sweden](https://github.com/abdulwahed-sweden).
+**Security Researcher · Systems Engineer · Protocol Architect**
 
-**Live:** [abdulwahed-mansour.dev](https://abdulwahed-mansour.dev)
+[![Portfolio](https://img.shields.io/badge/Portfolio-abdulwahed--mansour.dev-2563eb?style=flat-square)](https://abdulwahed-mansour.dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-abdulwahed--sweden-0a66c2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/abdulwahed-sweden/)
+[![GitHub](https://img.shields.io/badge/GitHub-abdulwahed--sweden-181717?style=flat-square&logo=github)](https://github.com/abdulwahed-sweden)
+
+Multi-variant CV portfolio and cover letter generator with 10 role-specific profiles. Each profile targets a distinct specialization backed by real projects, production code, and verified security research.
+
+---
 
 ## Quick Start
 
 ```bash
 cd site
 npm install
-npm run dev       # Dev server → localhost:4321
-npm run build     # Static build → site/dist/
-npm run preview   # Preview build
+npm run dev       # http://localhost:5173
+npm run build     # Static output → site/dist/
+npm run preview   # Preview production build
 ```
 
-**Requires Node.js 24+** (see `.nvmrc`)
+Requires **Node.js 24+** (see `.nvmrc`).
 
-## CV Profiles
+## Key Numbers
+
+| Metric | Value |
+|--------|-------|
+| Vulnerability exposure discovered | **$98.6M** (ADS class — Aave V4, Morpho Blue, Curve) |
+| Largest hack traced | **$1.5B** Bybit hack in **36 seconds** (BTC Sentinel) |
+| Production code | **208,000+ lines** across **21+ repositories** |
+| Test coverage | **5,700+ tests** in Rust, Python, Solidity, TypeScript |
+
+## Professional Profiles
 
 | # | Profile | Focus |
 |---|---------|-------|
@@ -29,44 +44,81 @@ npm run preview   # Preview build
 | 07 | [DevOps & Cloud Engineer](cvs/07-devops-cloud-engineer.md) | Docker, CI/CD, GitHub Actions, cloud deployment |
 | 08 | [Security Engineer / Pentester](cvs/08-security-engineer-pentester.md) | Rust pentesting tools, bug bounty, offensive security |
 | 09 | [Blockchain Forensics Specialist](cvs/09-blockchain-forensics-specialist.md) | On-chain tracing, AML, threat intelligence |
-| 10 | [AI-Integrated Backend Engineer](cvs/10-ai-integrated-backend-engineer.md) | LLM APIs, MCP servers, AI pipelines |
-
-## Key Numbers
-
-- **21+ repositories** across Rust, Solidity, Python, and TypeScript
-- **208,000+ lines of code** with **5,700+ tests**
-- **$98.6M** vulnerability exposure discovered (ADS class)
-- **$1.5B** Bybit hack traced in 36 seconds with BTC Sentinel
+| 10 | [AI-Integrated Backend Engineer](cvs/10-ai-integrated-backend-engineer.md) | LLM APIs, MCP servers, AI-powered pipelines |
 
 ## Tech Stack
 
-- **Astro 6** + **Tailwind CSS 4** + **React 19** (cover letter generator)
-- **Inter** + **JetBrains Mono** typography
-- Dark/light theme with CSS custom properties
-- Print-optimized A4 layout (Ctrl+P)
-- Full SEO: OG tags, Twitter Cards, JSON-LD, canonical URLs
+| Layer | Technology |
+|-------|-----------|
+| Framework | Vite 8 + React 19 + TypeScript |
+| Styling | Tailwind CSS 3 (class-based dark mode) |
+| Routing | React Router v7 (SPA with 404.html fallback) |
+| Markdown | react-markdown + remark-gfm |
+| Icons | lucide-react |
+| Typography | Inter + JetBrains Mono (Google Fonts) |
+| Build | < 1 second, code-split per CV profile |
+| Deploy | Static — compatible with HF Spaces, Vercel, Netlify |
+
+## Features
+
+- **10 CV profiles** rendered from markdown with full prose styling
+- **Cover letter generator** with 10 role templates, CV attachment selection, compose/preview tabs, copy-to-clipboard
+- **Dark / light theme** with system preference detection and localStorage persistence
+- **Private repository notice** on each CV page
+- **Print-friendly** layout (Ctrl+P hides nav, buttons, notices)
+- **Responsive** design with mobile navigation
+- **SEO** meta tags, Open Graph, structured data
 
 ## Project Structure
 
 ```
 abdulwahed-mansour-cv/
-├── cvs/                        # Raw Markdown CVs (ATS-friendly)
-├── cover-letter.md             # General cover letter
-├── site/
+├── cvs/                          # 10 raw Markdown CVs (ATS-friendly)
+│   ├── 01-python-backend-architect.md
+│   ├── 02-rust-systems-engineer.md
+│   └── ...
+├── cover-letter.md               # General cover letter template
+├── site/                         # Vite + React application
+│   ├── public/favicon.svg
 │   ├── src/
-│   │   ├── components/         # Nav, Footer, SEO, CoverLetterGenerator
-│   │   ├── content/cvs/        # CVs with frontmatter
-│   │   ├── layouts/            # BaseLayout
-│   │   ├── pages/              # index, /cv/[slug], /cover-letter, 404
-│   │   └── styles/global.css   # Design system
+│   │   ├── components/           # Navigation, Footer
+│   │   ├── contexts/             # ThemeContext (dark/light)
+│   │   ├── data/cvs.ts           # CV metadata + markdown loader
+│   │   └── pages/                # Home, CVPage, CoverLetter, NotFound
+│   ├── index.html
+│   ├── vite.config.ts
+│   ├── tailwind.config.js
 │   └── package.json
-├── .nvmrc                      # Node 24
+├── .nvmrc                        # Node 24
+├── PLAN.md                       # Design specification
 └── README.md
+```
+
+## Deployment
+
+Build produces a static `dist/` directory with a `404.html` SPA fallback:
+
+```bash
+cd site
+npm run build
+# Upload dist/ to any static host
+```
+
+**Hugging Face Spaces** — push `dist/` contents to a static Space:
+```bash
+git clone https://huggingface.co/spaces/abdulwahed-sweden/abdulwahed-cv /tmp/hf
+cp -r site/dist/* /tmp/hf/
+cd /tmp/hf && git add -A && git commit -m "Deploy" && git push
 ```
 
 ## Contact
 
-**Email:** abdulwahed.sweden@gmail.com
-**LinkedIn:** [abdulwahed-mansour](https://linkedin.com/in/abdulwahed-mansour)
-**GitHub:** [abdulwahed-sweden](https://github.com/abdulwahed-sweden)
-**Location:** Stockholm, Sweden
+**Abdulwahed Mansour** — Stockholm, Sweden
+
+- abdulwahed.sweden@gmail.com
+- [linkedin.com/in/abdulwahed-sweden](https://www.linkedin.com/in/abdulwahed-sweden/)
+- [github.com/abdulwahed-sweden](https://github.com/abdulwahed-sweden)
+
+## License
+
+All rights reserved. CV content and portfolio code are proprietary. Some referenced projects are in private repositories — access available upon request for interviews and due diligence.
