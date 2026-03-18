@@ -20,7 +20,6 @@ const { title, description, keywords, slug, currentSlug } = Astro.props;
   <head>
     <SEO title={title} description={description} keywords={keywords} slug={slug} />
     <script is:inline>
-      // Dark mode: apply before paint to prevent FOUC
       (function() {
         var s = localStorage.getItem('theme');
         if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -29,9 +28,9 @@ const { title, description, keywords, slug, currentSlug } = Astro.props;
       })();
     </script>
   </head>
-  <body class="min-h-screen flex flex-col" style="background: var(--bg-page); color: var(--color-text-primary);">
+  <body class="min-h-screen flex flex-col" style="background: var(--bg-page); color: var(--text-primary);">
     <Nav currentSlug={currentSlug} />
-    <main class="flex-1 pt-16">
+    <main class="flex-1 pt-14">
       <slot />
     </main>
     <Footer />

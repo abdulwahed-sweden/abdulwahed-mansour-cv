@@ -9,7 +9,7 @@ const cvs = defineCollection({
     description: z.string(),
     keywords: z.string(),
     icon: z.string(),
-    accent: z.string(),
+    tags: z.array(z.string()),
     slug: z.string(),
     order: z.number(),
   }),
