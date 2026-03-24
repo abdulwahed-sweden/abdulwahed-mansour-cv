@@ -11,6 +11,7 @@ export function Navigation() {
   const links = [
     { to: '/', label: 'Home' },
     { to: '/#profiles', label: 'Profiles' },
+    { to: '/resume', label: 'Resume' },
     { to: '/cover-letter', label: 'Cover Letter' },
   ];
 

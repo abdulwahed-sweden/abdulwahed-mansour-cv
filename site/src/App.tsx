@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { CVPage } from './pages/CVPage';
 import { CoverLetter } from './pages/CoverLetter';
 import { NotFound } from './pages/NotFound';
+import { PrintableCV } from './pages/PrintableCV';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cv/:slug" element={<CVPage />} />
+            <Route path="/resume" element={<PrintableCV />} />
             <Route path="/cover-letter" element={<CoverLetter />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
