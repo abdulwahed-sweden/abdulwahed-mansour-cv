@@ -121,7 +121,18 @@ export function CVPage() {
           </div>
         ) : (
           <article className="cv-prose">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content ?? ''}</ReactMarkdown>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                code({ children }) {
+                  const text = String(children).trim();
+                  if (text === 'NEW') {
+                    return <span className="cv-badge-new">NEW</span>;
+                  }
+                  return <code>{children}</code>;
+                },
+              }}
+            >{content ?? ''}</ReactMarkdown>
           </article>
         )}
 
