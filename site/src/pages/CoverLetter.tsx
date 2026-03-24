@@ -3,138 +3,46 @@ import { Link } from 'react-router-dom';
 import { Copy, Check } from 'lucide-react';
 
 const CV_PROFILES = [
-  { id: "CV-01", title: "Senior Python Backend Architect" },
-  { id: "CV-02", title: "Senior Rust Systems Engineer" },
-  { id: "CV-03", title: "Smart Contract Security Auditor" },
-  { id: "CV-04", title: "Blockchain Security Researcher" },
-  { id: "CV-05", title: "DeFi Protocol Engineer — Islamic Finance" },
-  { id: "CV-06", title: "Full-Stack Web Developer" },
-  { id: "CV-07", title: "DevOps & Cloud Infrastructure Engineer" },
-  { id: "CV-08", title: "Security Engineer & Penetration Tester" },
-  { id: "CV-09", title: "Blockchain Forensics & Intelligence Analyst" },
-  { id: "CV-10", title: "AI-Integrated Backend Engineer" },
+  { id: "CV-01", title: "Senior Backend Engineer (Python / Django)" },
+  { id: "CV-02", title: "Security Engineer (Systems Security & Backend Protection)" },
 ];
 
 const TEMPLATES: Record<string, { label: string; titleLine: string; hook: string; body: string; highlights: string[]; cvs: string[] }> = {
+  "backend": {
+    label: "Backend Engineer",
+    titleLine: "Senior Backend Engineer (Python / Django)",
+    hook: "With a strong track record building scalable, production-grade Python backends — from enterprise Django platforms to high-throughput FastAPI services — I bring both architectural depth and hands-on delivery.",
+    body: "My work spans Python backend architecture, API design, database optimization, and cloud infrastructure.",
+    highlights: [
+      "Designed and shipped production backend systems with Django and FastAPI — including a production-hardened auth platform with role-based access, rate limiting, HSTS, and CI/CD, and a booking API with conflict prevention and lifecycle management.",
+      "Built AI-to-database integration systems connecting natural language queries to PostgreSQL safely, with read-only enforcement at both database and application levels.",
+      "Developed a production-ready Django backend tailored for the Swedish market — BankID authentication, Swish payments, VAT logic, and GDPR-aware data structures.",
+    ],
+    cvs: ["CV-01"],
+  },
   "security": {
-    label: "Security Researcher",
-    titleLine: "Security Researcher · Systems Engineer · Protocol Architect",
-    hook: "With extensive hands-on experience in vulnerability research, smart contract auditing, and protocol security analysis, I am confident in my ability to strengthen your security posture.",
-    body: "My work spans security research, Rust systems engineering, Python backend architecture, and DeFi protocol design.",
+    label: "Security Engineer",
+    titleLine: "Security Engineer (Systems Security & Backend Protection)",
+    hook: "With hands-on experience in vulnerability analysis, threat modeling, and building security tooling that addresses real-world backend and infrastructure risks, I am confident in my ability to strengthen your security posture.",
+    body: "My work spans security research, penetration testing, secure architecture, and building offensive/defensive tools in Python and Rust.",
     highlights: [
-      "Discovered and formalized the ADS (Asymmetric Deficit Socialization) vulnerability class — a ~$98.6M phantom yield exposure affecting Aave V4 ($96M), Morpho Blue ($2M), and Curve crvUSD ($585K).",
-      "Active auditor on Sherlock and Immunefi with confirmed findings including a High-severity SlippagePriceChecker vulnerability in Moonwell/Mamo, and multiple findings in Fluid DEX V2.",
-      "Built BTC Sentinel — a professional-grade multi-chain forensics platform in Rust (14,900+ LOC, 213 tests, 5 core engines) that traced the $1.5B Bybit hack in 36 seconds.",
+      "Built a modular penetration testing framework from scratch in Rust with async TCP scanning, HTTP header injection detection (30+ payloads), and a plugin architecture for extensible security analysis.",
+      "Active security researcher on Immunefi, Sherlock, and Code4rena with confirmed high-severity findings in production systems — including vulnerability discovery affecting ~$98.6M in assets.",
+      "Developed a large-scale security automation platform (25,000+ lines of code) and a high-performance forensic analysis platform used in real investigations tracing $1.5B in stolen funds.",
     ],
-    cvs: ["CV-03", "CV-04", "CV-08", "CV-09"],
-  },
-  "rust": {
-    label: "Rust Systems Engineer",
-    titleLine: "Senior Rust Systems Engineer · Security Architect",
-    hook: "With deep expertise in building high-performance, memory-safe systems in Rust — from async network services and cryptographic engines to forensics platforms and CLI toolkits — I am eager to contribute robust engineering to your team.",
-    body: "My work spans Rust systems programming, async-first architecture, cryptography, and security tooling.",
-    highlights: [
-      "Maintain 21+ repositories totaling 208,000+ lines of production code with 5,700+ tests. Flagship Rust projects include BTC Sentinel (213 tests, 5 core engines), HuntKey (ERC-4337, HKDF-SHA256, 126 tests), Chthonic (modular pentest framework).",
-      "Built high-performance async services using Tokio/Axum, including real-time blockchain monitoring pipelines, MCP-integrated REST APIs, and production web applications.",
-      "Engineered cryptographic backends with HKDF-SHA256 key derivation hierarchies, EIP-712 structured signing, and dual-layer EIP-1153 oracle defense proven on $50M mainnet fork simulations.",
-    ],
-    cvs: ["CV-02", "CV-08", "CV-09"],
-  },
-  "python": {
-    label: "Python Backend",
-    titleLine: "Senior Python Backend Architect · Systems Engineer",
-    hook: "With a strong track record building scalable, production-grade Python backends — from enterprise Django platforms to high-throughput FastAPI services and AI-powered pipelines — I bring both architectural vision and hands-on delivery.",
-    body: "My work spans Python backend architecture, API design, AI integration, and DevOps.",
-    highlights: [
-      "Architected and shipped production services with FastAPI and Django 5.x including BookFlow (full-stack booking platform), AuthProfile (Django starter with complete auth flow), and a Django operations dashboard for a multi-chain DeFi protocol.",
-      "Built AI-powered data pipelines including a news aggregation bot, a Docker-isolated MCP server enabling AI agents to query PostgreSQL via natural language, and an async Rust client library for the DeepSeek AI API.",
-      "Designed and maintained 21+ repositories with 208,000+ LOC and 5,700+ tests, with strong focus on clean architecture, type safety, and CI/CD pipelines.",
-    ],
-    cvs: ["CV-01", "CV-10", "CV-07"],
-  },
-  "blockchain": {
-    label: "Blockchain / DeFi",
-    titleLine: "DeFi Protocol Engineer · Blockchain Security Researcher",
-    hook: "With hands-on experience designing, auditing, and securing DeFi protocols — and a published vulnerability class affecting $98.6M in assets — I bring both builder and breaker perspectives to blockchain engineering.",
-    body: "My work spans DeFi protocol design, smart contract security, blockchain forensics, and Islamic finance innovation.",
-    highlights: [
-      "Discovered the ADS vulnerability class — a systemic flaw exposing ~$98.6M across Aave V4, Morpho Blue, and Curve crvUSD.",
-      "Designed and built Sunna Protocol — the world's first Shariah-compliant DeFi infrastructure with constitutional invariants, ERC-4626 adapter, on-chain effort measurement, and 1,630+ tests across EVM and Solana.",
-      "Built TickDriftGuardV4 — a dual-layer EIP-1153 defense against Uniswap V3 oracle manipulation, proven on $50M mainnet fork simulation.",
-    ],
-    cvs: ["CV-04", "CV-05", "CV-03", "CV-09"],
-  },
-  "fullstack": {
-    label: "Full-Stack Developer",
-    titleLine: "Full-Stack Engineer · Systems Architect",
-    hook: "Combining strong backend engineering in Python and Rust with modern frontend development, I deliver complete, production-ready applications from database design to deployment.",
-    body: "My work spans full-stack web development, API architecture, and cloud-native deployment.",
-    highlights: [
-      "Built complete full-stack applications including BookFlow (FastAPI + Vue.js), AuthProfile (Django 5.2 + DRF + Bootstrap 5), and a Next.js AI chatbot with Vercel AI SDK supporting 4 LLM providers.",
-      "Developed production Rust web applications with Axum 0.8 featuring dark/light theme systems, full Arabic/English i18n, and async-first architecture on Tokio.",
-      "Maintain 21+ repositories totaling 208,000+ LOC across Python, Rust, TypeScript, and Solidity with 5,700+ tests and CI/CD pipelines.",
-    ],
-    cvs: ["CV-06", "CV-01", "CV-07", "CV-10"],
-  },
-  "ai": {
-    label: "AI Engineer",
-    titleLine: "AI-Integrated Backend Engineer · Systems Architect",
-    hook: "With hands-on experience building production systems that connect LLM APIs, Model Context Protocol servers, and AI-powered data pipelines with robust backend infrastructure, I am well-positioned to accelerate your AI engineering efforts.",
-    body: "My work spans AI integration, backend systems, and developer tooling across multiple languages and frameworks.",
-    highlights: [
-      "Built AI integration systems: a multi-provider chatbot (Next.js + Vercel AI SDK), a Docker-isolated MCP server for PostgreSQL via natural language, and a Rust MCP tool provider for Claude Code Desktop.",
-      "Published an async Rust client library for the DeepSeek AI API with full type safety. Built automated content pipelines and production-grade data collection tools for AI training data and RAG pipelines.",
-      "Strong backend foundation in Python (FastAPI, Django) and Rust (Axum, Tokio) with 21+ repositories, 208,000+ LOC, and comprehensive testing.",
-    ],
-    cvs: ["CV-10", "CV-01", "CV-02", "CV-07"],
-  },
-  "devops": {
-    label: "DevOps & Cloud",
-    titleLine: "DevOps & Cloud Infrastructure Engineer",
-    hook: "With hands-on experience designing containerized deployments, CI/CD pipelines, and cloud-native infrastructure for web services, APIs, and blockchain protocols, I bring strong infrastructure engineering to your team.",
-    body: "My work spans containerization, CI/CD automation, cloud deployment, and infrastructure-as-code practices.",
-    highlights: [
-      "Designed infrastructure for a multi-chain DeFi protocol spanning 4 pillars with CI/CD security gates running invariant verification on every code change.",
-      "Built Docker-based deployments across Hugging Face Spaces, Vercel, and self-hosted infrastructure with GitHub Actions pipelines.",
-      "Created secure container isolation patterns including Dockerized read-only PostgreSQL for AI agent access via MCP and multi-stage builds.",
-    ],
-    cvs: ["CV-07", "CV-01", "CV-06"],
-  },
-  "pentester": {
-    label: "Pentester / SecEng",
-    titleLine: "Security Engineer & Penetration Tester",
-    hook: "With experience building offensive and defensive security tools in Rust and conducting vulnerability research across web and blockchain platforms, I bring strong technical security engineering to your team.",
-    body: "My work spans penetration testing, security tool development, bug bounty hunting, and blockchain forensics.",
-    highlights: [
-      "Built Chthonic — a modular penetration testing framework in Rust inspired by Metasploit. Memory-safe, 10x faster, with async networking, plugin architecture, TCP scanner, HTTP injection scanner (30+ payloads).",
-      "Active bug bounty hunter across 6 platforms with confirmed findings including High-severity vulnerabilities and the ADS vulnerability class (~$98.6M exposure).",
-      "Built complementary security tools: BTC Sentinel (forensics, 213 tests), TickDriftGuardV4 (oracle defense), HuntKey (account abstraction security, 126 tests).",
-    ],
-    cvs: ["CV-08", "CV-03", "CV-04", "CV-09"],
-  },
-  "forensics": {
-    label: "Blockchain Forensics",
-    titleLine: "Blockchain Forensics & Intelligence Analyst",
-    hook: "With proven experience building forensics intelligence platforms and conducting real-world investigations into major cryptocurrency incidents, I bring deep analytical and engineering capabilities to blockchain investigations.",
-    body: "My work spans blockchain forensics, threat intelligence, AML analysis, and security research.",
-    highlights: [
-      "Built BTC Sentinel — a multi-chain forensics platform in Rust with 5 engines: pattern analysis, forensic flow tracing, cluster analysis, watchlist scanning, and real-time mempool interception.",
-      "Traced the $1.5B Bybit hack across 682 transactions and 42,479 addresses in 36 seconds, identifying Lazarus Group attribution.",
-      "Deep DeFi security expertise: discovered the ADS vulnerability class (~$98.6M), built oracle manipulation defense tools, and conducted MEV research across 33,827 liquidation events.",
-    ],
-    cvs: ["CV-09", "CV-04", "CV-08", "CV-03"],
+    cvs: ["CV-02"],
   },
   "general": {
     label: "General",
-    titleLine: "Security Researcher · Systems Engineer · Protocol Architect",
-    hook: "With extensive hands-on experience building secure, high-performance systems across backend infrastructure, smart contract security, and blockchain protocols, I am confident in my ability to bring significant value to your team.",
-    body: "My work spans security research, Rust systems engineering, Python backend architecture, and DeFi protocol design.",
+    titleLine: "Senior Backend & Security Engineer",
+    hook: "With 9+ years of experience building reliable backend systems and a strong security-focused mindset, I bring both engineering depth and a defensive perspective to every system I work on.",
+    body: "My work spans Python backend architecture, security research, and building tools that address real-world system risks.",
     highlights: [
-      "Discovered the ADS vulnerability class — a ~$98.6M phantom yield exposure affecting major lending protocols.",
-      "Built and maintain 21+ repositories totaling 208,000+ lines of production code with 5,700+ tests.",
-      "Active security auditor on Sherlock and Immunefi, and builder of forensics tools that traced the $1.5B Bybit hack in 36 seconds.",
+      "Designed and shipped production backend systems with Django and FastAPI — including auth platforms, booking APIs, and AI-to-database integrations with security hardening at every layer.",
+      "Active security researcher with confirmed high-severity vulnerability findings in production systems, and builder of penetration testing and forensic analysis tools in Rust and Python.",
+      "Experienced in designing systems that handle real-world constraints — concurrency, reliability under load, and secure architecture — with a preference for simple, testable solutions.",
     ],
-    cvs: ["CV-02", "CV-03", "CV-04", "CV-01"],
+    cvs: ["CV-01", "CV-02"],
   },
 };
 
@@ -148,12 +56,12 @@ function today() {
 }
 
 export function CoverLetter() {
-  const [tpl, setTpl] = useState('security');
+  const [tpl, setTpl] = useState('backend');
   const [company, setCompany] = useState('');
   const [recipient, setRecipient] = useState('');
   const [role, setRole] = useState('');
   const [date, setDate] = useState(today());
-  const [selectedCVs, setSelectedCVs] = useState(TEMPLATES.security.cvs);
+  const [selectedCVs, setSelectedCVs] = useState(TEMPLATES.backend.cvs);
   const [showSwedish, setShowSwedish] = useState(true);
   const [copied, setCopied] = useState(false);
   const [tab, setTab] = useState<'compose' | 'preview'>('compose');
@@ -167,8 +75,8 @@ export function CoverLetter() {
 
   const letterText = `ABDULWAHED MANSOUR
 ${t.titleLine}
-Mejramvägen 37, 145 73 Norsborg, Stockholm, Sweden
-+46 76 930 8145 | abdulwahed.sweden@gmail.com
+Stockholm, Sweden
++46 76 930 8145 | abdulwahed.mansour@gmail.com
 GitHub: github.com/abdulwahed-sweden | LinkedIn: linkedin.com/in/abdulwahed-sweden
 
 ${formatDate(date)}
@@ -210,33 +118,35 @@ Portfolio: abdulwahed-mansour.dev`;
     setSelectedCVs(TEMPLATES[key].cvs);
   };
 
+  const inputClass = "w-full px-4 py-2.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition placeholder:text-gray-400 dark:placeholder:text-gray-500";
+
   return (
     <div className="bg-white dark:bg-gray-950 min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 py-12">
 
         {/* Breadcrumb */}
-        <nav className="no-print flex items-center gap-2 text-sm mb-8 text-gray-500 dark:text-gray-400">
+        <nav aria-label="Breadcrumb" className="no-print flex items-center gap-2 text-sm mb-10 text-gray-400 dark:text-gray-500">
           <Link to="/" className="hover:text-gray-900 dark:hover:text-white transition">Home</Link>
           <span>/</span>
           <span className="text-gray-900 dark:text-white font-medium">Cover Letter</span>
         </nav>
 
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-10">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Cover Letter Generator</h1>
-            <p className="text-gray-600 dark:text-gray-300 mt-1">10 profiles · 10 templates · dynamic content</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Cover Letter Generator</h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">2 profiles · 3 templates · dynamic content</p>
           </div>
-          <button onClick={handleCopy} className="flex items-center space-x-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold text-sm">
+          <button onClick={handleCopy} aria-label={copied ? 'Copied to clipboard' : 'Copy letter to clipboard'} className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium text-sm">
             {copied ? <Check size={16} /> : <Copy size={16} />}
-            <span>{copied ? 'Copied!' : 'Copy Letter'}</span>
+            <span className="hidden sm:inline">{copied ? 'Copied!' : 'Copy Letter'}</span>
           </button>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 mb-6 border-b border-gray-200 dark:border-gray-800">
+        <div className="flex gap-1 mb-8 border-b border-gray-200 dark:border-gray-800" role="tablist">
           {(['compose', 'preview'] as const).map(key => (
-            <button key={key} onClick={() => setTab(key)} className={`px-5 py-3 text-sm font-semibold transition border-b-2 -mb-px ${tab === key ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>
+            <button key={key} role="tab" aria-selected={tab === key} onClick={() => setTab(key)} className={`px-5 py-3 text-sm font-medium transition border-b-2 -mb-px ${tab === key ? 'border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400' : 'border-transparent text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white'}`}>
               {key === 'compose' ? 'Compose' : 'Preview'}
             </button>
           ))}
@@ -247,10 +157,10 @@ Portfolio: abdulwahed-mansour.dev`;
           <div className="space-y-8">
             {/* Template Selection */}
             <div>
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">Role Template</label>
+              <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">Role Template</label>
               <div className="flex flex-wrap gap-2">
                 {Object.entries(TEMPLATES).map(([key, val]) => (
-                  <button key={key} onClick={() => switchTemplate(key)} className={`px-4 py-2 rounded-full text-sm font-medium transition ${tpl === key ? 'bg-blue-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'}`}>
+                  <button key={key} onClick={() => switchTemplate(key)} className={`px-4 py-2 rounded-lg text-sm font-medium transition ${tpl === key ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900'}`}>
                     {val.label}
                   </button>
                 ))}
@@ -260,38 +170,38 @@ Portfolio: abdulwahed-mansour.dev`;
             {/* Form Fields */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Company</label>
-                <input value={company} onChange={e => setCompany(e.target.value)} placeholder="e.g. Trail of Bits" className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">Company</label>
+                <input value={company} onChange={e => setCompany(e.target.value)} placeholder="e.g. Klarna" className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Recipient</label>
-                <input value={recipient} onChange={e => setRecipient(e.target.value)} placeholder="e.g. Dr. Sarah Chen" className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">Recipient</label>
+                <input value={recipient} onChange={e => setRecipient(e.target.value)} placeholder="e.g. Dr. Sarah Chen" className={inputClass} />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Date</label>
-                <input type="date" value={date} onChange={e => setDate(e.target.value)} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+                <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">Date</label>
+                <input type="date" value={date} onChange={e => setDate(e.target.value)} className={inputClass} />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Role Title Override</label>
-              <input value={role} onChange={e => setRole(e.target.value)} placeholder={t.label} className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+              <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">Role Title Override</label>
+              <input value={role} onChange={e => setRole(e.target.value)} placeholder={t.label} className={inputClass} />
             </div>
 
             {/* CV Selection */}
             <div>
-              <label className="block text-sm font-semibold text-gray-900 dark:text-white mb-3">Attached CV Profiles</label>
+              <label className="block text-sm font-medium text-gray-900 dark:text-white mb-3">Attached CV Profiles</label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {CV_PROFILES.map(cv => {
                   const active = selectedCVs.includes(cv.id);
                   const rec = t.cvs.includes(cv.id);
                   return (
-                    <label key={cv.id} className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition ${active ? 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800' : 'bg-gray-50 dark:bg-gray-900 border border-transparent hover:border-gray-200 dark:hover:border-gray-700'}`}>
+                    <label key={cv.id} className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition border ${active ? 'bg-blue-50 dark:bg-blue-900/15 border-blue-200 dark:border-blue-800' : 'border-gray-150 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700'}`}>
                       <input type="checkbox" checked={active} onChange={() => toggleCV(cv.id)} className="accent-blue-600 w-4 h-4" />
                       <span className="text-sm">
                         <strong className={active ? 'text-blue-700 dark:text-blue-300' : 'text-gray-900 dark:text-white'}>{cv.id}</strong>
-                        <span className="text-gray-600 dark:text-gray-400 ml-2">{cv.title}</span>
-                        {rec && <span className="ml-2 text-xs bg-blue-600 text-white px-2 py-0.5 rounded-full font-semibold">REC</span>}
+                        <span className="text-gray-500 dark:text-gray-400 ml-2">{cv.title}</span>
+                        {rec && <span className="ml-2 text-xs bg-blue-600 text-white px-2 py-0.5 rounded font-medium">REC</span>}
                       </span>
                     </label>
                   );
@@ -301,26 +211,26 @@ Portfolio: abdulwahed-mansour.dev`;
 
             <label className="flex items-center gap-3 cursor-pointer">
               <input type="checkbox" checked={showSwedish} onChange={() => setShowSwedish(!showSwedish)} className="accent-blue-600 w-4 h-4" />
-              <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">Include Swedish closing line</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">Include Swedish closing line</span>
             </label>
           </div>
         )}
 
         {/* Preview Tab */}
         {tab === 'preview' && (
-          <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 sm:p-10">
+          <div className="rounded-xl border border-gray-200 dark:border-gray-800 p-8 sm:p-10">
             <div className="text-center pb-6 mb-6 border-b-2 border-gray-900 dark:border-white">
               <div className="text-xl font-bold text-gray-900 dark:text-white tracking-wide">ABDULWAHED MANSOUR</div>
               <div className="text-sm text-blue-600 dark:text-blue-400 font-medium mt-1">{t.titleLine}</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">
-                Mejramvägen 37, 145 73 Norsborg, Stockholm, Sweden<br />
-                +46 76 930 8145 | abdulwahed.sweden@gmail.com<br />
+              <div className="text-sm text-gray-400 dark:text-gray-500 mt-2 leading-relaxed">
+                Stockholm, Sweden<br />
+                +46 76 930 8145 | abdulwahed.mansour@gmail.com<br />
                 GitHub: github.com/abdulwahed-sweden | LinkedIn: linkedin.com/in/abdulwahed-sweden
               </div>
             </div>
 
-            <div className="space-y-4 text-gray-800 dark:text-gray-200 text-[15px] leading-relaxed">
-              <p className="text-gray-500 dark:text-gray-400">{formatDate(date)}</p>
+            <div className="space-y-4 text-gray-700 dark:text-gray-300 text-[15px] leading-relaxed">
+              <p className="text-gray-400 dark:text-gray-500">{formatDate(date)}</p>
               <p>{greeting}</p>
               <p>{opening}</p>
               <p>{t.body}</p>
@@ -332,7 +242,7 @@ Portfolio: abdulwahed-mansour.dev`;
                 </div>
               ))}
 
-              <div className="bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-800/30 rounded-lg p-4 text-sm text-yellow-800 dark:text-yellow-300 italic">
+              <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-200/60 dark:border-amber-800/30 rounded-lg p-4 text-sm text-amber-700 dark:text-amber-400 italic">
                 Several of these projects are hosted in private repositories due to their sensitive nature and are available for review upon request.
               </div>
 
@@ -346,15 +256,15 @@ Portfolio: abdulwahed-mansour.dev`;
 
               <div className="mt-6">
                 <p>Best regards,</p>
-                <p className="font-bold mt-1">Abdulwahed Mansour</p>
-                <p className="text-gray-500 dark:text-gray-400">{roleRef}</p>
+                <p className="font-bold text-gray-900 dark:text-white mt-1">Abdulwahed Mansour</p>
+                <p className="text-gray-400 dark:text-gray-500">{roleRef}</p>
               </div>
 
               {attached.length > 0 && (
-                <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-                  <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">Attached Profiles</p>
+                <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
+                  <p className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">Attached Profiles</p>
                   {attached.map(c => (
-                    <p key={c.id} className="text-sm text-gray-700 dark:text-gray-300">— <strong>{c.id}</strong>: {c.title}</p>
+                    <p key={c.id} className="text-sm text-gray-600 dark:text-gray-400">— <strong className="text-gray-900 dark:text-white">{c.id}</strong>: {c.title}</p>
                   ))}
                   <p className="text-sm text-blue-600 dark:text-blue-400 mt-3">Portfolio: abdulwahed-mansour.dev</p>
                 </div>
@@ -364,13 +274,13 @@ Portfolio: abdulwahed-mansour.dev`;
         )}
 
         {/* Status bar */}
-        <div className="mt-6 flex flex-wrap gap-4 justify-center text-sm text-gray-500 dark:text-gray-400">
-          <span>Template: <strong className="text-gray-900 dark:text-white">{t.label}</strong></span>
+        <div className="mt-8 flex flex-wrap gap-4 justify-center text-xs text-gray-400 dark:text-gray-500">
+          <span>Template: <strong className="text-gray-600 dark:text-gray-300">{t.label}</strong></span>
           <span>·</span>
-          <span>CVs: <strong className="text-gray-900 dark:text-white">{selectedCVs.length}</strong></span>
+          <span>CVs: <strong className="text-gray-600 dark:text-gray-300">{selectedCVs.length}</strong></span>
           <span>·</span>
           <span>{formatDate(date)}</span>
-          {company && <><span>·</span><span>To: <strong className="text-gray-900 dark:text-white">{company}</strong></span></>}
+          {company && <><span>·</span><span>To: <strong className="text-gray-600 dark:text-gray-300">{company}</strong></span></>}
         </div>
       </div>
     </div>

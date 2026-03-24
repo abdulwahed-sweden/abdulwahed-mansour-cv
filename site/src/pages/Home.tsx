@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Zap, Code } from 'lucide-react';
+import { ArrowRight, Shield, Server, Code, Mail, Linkedin, Github } from 'lucide-react';
 import { cvs } from '../data/cvs';
 
 export function Home() {
@@ -7,119 +7,115 @@ export function Home() {
 
   return (
     <div className="bg-white dark:bg-gray-950 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8">
 
         {/* Hero */}
-        <div className="pt-20 pb-16">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+        <div className="pt-24 pb-20">
+          <div className="mb-20">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 rounded-full text-sm font-medium text-blue-600 dark:text-blue-400 mb-8">
+              <span className="w-1.5 h-1.5 bg-blue-600 dark:bg-blue-400 rounded-full" />
+              Available for opportunities in Stockholm
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight leading-[1.1]">
               Abdulwahed Mansour
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-4 max-w-2xl mx-auto">
-              Security Researcher &amp; Systems Engineer based in Stockholm
+            <p className="text-xl sm:text-2xl text-gray-500 dark:text-gray-400 mb-8 max-w-2xl leading-relaxed">
+              Senior Backend Engineer &amp; Security Engineer. I build reliable systems with Python and Django, and protect them.
             </p>
-            <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-              I find vulnerabilities in DeFi protocols, build forensics tools in Rust, and architect secure systems. 21+ repositories, 208K+ lines of code, 5,700+ tests.
-            </p>
-            <div className="flex justify-center gap-4">
-              <a href="#profiles" className="flex items-center space-x-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold">
-                <span>View Profiles</span>
-                <ArrowRight size={18} />
-              </a>
-              <a href="mailto:abdulwahed.sweden@gmail.com" className="px-6 py-3 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition font-semibold">
+            <div className="flex flex-wrap gap-3">
+              <a href="mailto:abdulwahed.mansour@gmail.com" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium text-sm">
+                <Mail size={16} />
                 Get in Touch
+              </a>
+              <a href="https://www.linkedin.com/in/abdulwahed-sweden/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition font-medium text-sm">
+                <Linkedin size={16} />
+                LinkedIn
+              </a>
+              <a href="https://github.com/abdulwahed-sweden" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition font-medium text-sm">
+                <Github size={16} />
+                GitHub
               </a>
             </div>
           </div>
 
           {/* Stats */}
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
-            <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-              <div className="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="text-red-600 dark:text-red-400" size={24} />
+          <div className="grid sm:grid-cols-3 gap-px bg-gray-200 dark:bg-gray-800 rounded-2xl overflow-hidden mb-20">
+            <div className="bg-white dark:bg-gray-950 p-8">
+              <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-4">
+                <Server className="text-blue-600 dark:text-blue-400" size={20} />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">$98.6M Exposure Discovered</h3>
-              <p className="text-gray-600 dark:text-gray-400">ADS vulnerability class found across Aave V4, Morpho Blue, and Curve crvUSD lending protocols.</p>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">9+ Years</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Building production backend systems with Python, Django, and cloud infrastructure</p>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-              <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="text-yellow-600 dark:text-yellow-400" size={24} />
+            <div className="bg-white dark:bg-gray-950 p-8">
+              <div className="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-4">
+                <Shield className="text-red-600 dark:text-red-400" size={20} />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">$1.5B Hack Traced in 36s</h3>
-              <p className="text-gray-600 dark:text-gray-400">Bybit hack traced across 682 transactions and 42,479 addresses with BTC Sentinel forensics platform.</p>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Security Research</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Confirmed high-severity findings on Immunefi and Sherlock. Active vulnerability researcher</p>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-4">
-                <Code className="text-blue-600 dark:text-blue-400" size={24} />
+            <div className="bg-white dark:bg-gray-950 p-8">
+              <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-4">
+                <Code className="text-green-600 dark:text-green-400" size={20} />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">208K+ Lines of Code</h3>
-              <p className="text-gray-600 dark:text-gray-400">Across 21+ repositories with 5,700+ tests in Rust, Python, Solidity, and TypeScript.</p>
+              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">End-to-End</div>
+              <p className="text-sm text-gray-500 dark:text-gray-400">From system design to production. Correctness, concurrency control, and reliability under load</p>
             </div>
           </div>
 
-          {/* Expertise */}
+          {/* What I Do */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">What I Do</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Security</h3>
-                <p className="text-gray-600 dark:text-gray-400">Smart contract auditing, penetration testing, blockchain forensics, and vulnerability research. Active on Sherlock, Immunefi, and Code4rena.</p>
-              </div>
-              <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Systems Engineering</h3>
-                <p className="text-gray-600 dark:text-gray-400">High-performance Rust services with Tokio/Axum. Python backends with FastAPI and Django. DevOps, CI/CD, and cloud infrastructure.</p>
-              </div>
-              <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Blockchain</h3>
-                <p className="text-gray-600 dark:text-gray-400">DeFi protocol design, Islamic finance protocols, ERC-4337 account abstraction, ERC-4626 vaults. Solidity and Foundry.</p>
-              </div>
-              <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">AI &amp; Full-Stack</h3>
-                <p className="text-gray-600 dark:text-gray-400">LLM-powered systems with MCP, LangChain, and multi-provider backends. Full-stack applications with Next.js, Vue, and React.</p>
-              </div>
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-6">What I Do</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { title: 'Backend Engineering', desc: 'Production systems with Django, FastAPI, PostgreSQL. API design, database optimization, authentication, scalable architecture.' },
+                { title: 'Systems Security', desc: 'Vulnerability analysis, threat modeling, secure architecture. Offensive and defensive tooling in Python and Rust.' },
+                { title: 'DevOps & Infrastructure', desc: 'Docker, CI/CD with GitHub Actions, cloud infrastructure across AWS, GCP, Azure. Automated deployment and monitoring.' },
+                { title: 'AI Integration', desc: 'LLM pipelines with MCP protocol, OpenAI, Claude, Mistral. Safe AI-to-database connections for production use.' },
+              ].map(item => (
+                <div key={item.title} className="group p-6 rounded-xl border border-gray-150 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition">
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Profiles */}
-          <div id="profiles" className="mb-20 scroll-mt-20">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Professional Profiles</h2>
-            <div className="grid gap-4">
+          {/* CV Profiles */}
+          <div className="mb-20">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-6">CV Profiles</h2>
+            <div className="space-y-3">
               {sorted.map(cv => (
                 <Link
                   key={cv.slug}
                   to={`/cv/${cv.slug}`}
-                  className="group bg-gray-50 dark:bg-gray-900 rounded-xl p-6 flex items-start gap-4 hover:shadow-lg dark:hover:shadow-xl transition"
+                  className="group flex items-center gap-5 p-5 rounded-xl border border-gray-150 dark:border-gray-800 hover:border-blue-200 dark:hover:border-blue-800 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition"
                 >
-                  <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-11 h-11 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
                     <span className="text-white font-bold font-mono text-sm">{String(cv.order).padStart(2, '0')}</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+                    <h3 className="text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition mb-1">
                       {cv.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mt-1">{cv.description}</p>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      {cv.tags.map(tag => (
-                        <span key={tag} className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">{tag}</span>
-                      ))}
-                    </div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{cv.description}</p>
                   </div>
-                  <ArrowRight size={20} className="text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition flex-shrink-0 mt-1" />
+                  <ArrowRight size={18} className="text-gray-300 dark:text-gray-600 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition flex-shrink-0" />
                 </Link>
               ))}
             </div>
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-gray-900 dark:to-blue-900/30 rounded-2xl p-12 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Let's work together</h2>
-            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-lg mx-auto">Available for full-time positions, contract work, and security audits. Based in Stockholm, open to remote.</p>
-            <div className="flex justify-center gap-4 flex-wrap">
-              <a href="mailto:abdulwahed.sweden@gmail.com" className="inline-flex items-center space-x-2 px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold">
-                <span>Start a Conversation</span>
-                <ArrowRight size={18} />
+          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 p-10 sm:p-12 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Let's work together</h2>
+            <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-md mx-auto">Available for full-time positions and contract work. Based in Stockholm, open to remote.</p>
+            <div className="flex justify-center gap-3 flex-wrap">
+              <a href="mailto:abdulwahed.mansour@gmail.com" className="inline-flex items-center gap-2 px-6 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition font-medium text-sm">
+                Start a Conversation
+                <ArrowRight size={16} />
               </a>
-              <a href="https://www.linkedin.com/in/abdulwahed-sweden/" target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition font-semibold shadow-sm">
+              <a href="https://www.linkedin.com/in/abdulwahed-sweden/" target="_blank" rel="noopener noreferrer" className="px-6 py-2.5 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900 transition font-medium text-sm">
                 Connect on LinkedIn
               </a>
             </div>

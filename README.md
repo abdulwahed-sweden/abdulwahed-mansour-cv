@@ -1,13 +1,12 @@
 # Abdulwahed Mansour
 
-**Security Researcher · Systems Engineer · Protocol Architect**
+**Senior Backend Engineer & Security Engineer**
 
-[![Live Demo](https://img.shields.io/badge/Live-Hugging%20Face%20Spaces-ffd21e?style=flat-square&logo=huggingface)](https://huggingface.co/spaces/abdulwahed-sweden/abdulwahed-cv)
 [![Portfolio](https://img.shields.io/badge/Portfolio-abdulwahed--mansour.dev-2563eb?style=flat-square)](https://abdulwahed-mansour.dev)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-abdulwahed--sweden-0a66c2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/abdulwahed-sweden/)
 [![GitHub](https://img.shields.io/badge/GitHub-abdulwahed--sweden-181717?style=flat-square&logo=github)](https://github.com/abdulwahed-sweden)
 
-Multi-variant CV portfolio and cover letter generator with 10 role-specific profiles. Each profile targets a distinct specialization backed by real projects, production code, and verified security research.
+Professional CV portfolio with 2 focused profiles — one for backend engineering, one for security engineering. Each profile is backed by real projects, production code, and verified research.
 
 ---
 
@@ -23,29 +22,12 @@ npm run preview   # Preview production build
 
 Requires **Node.js 24+** (see `.nvmrc`).
 
-## Key Numbers
-
-| Metric | Value |
-|--------|-------|
-| Vulnerability exposure discovered | **$98.6M** (ADS class — Aave V4, Morpho Blue, Curve) |
-| Largest hack traced | **$1.5B** Bybit hack in **36 seconds** (BTC Sentinel) |
-| Production code | **208,000+ lines** across **21+ repositories** |
-| Test coverage | **5,700+ tests** in Rust, Python, Solidity, TypeScript |
-
 ## Professional Profiles
 
 | # | Profile | Focus |
 |---|---------|-------|
-| 01 | [Python Backend Architect](cvs/01-python-backend-architect.md) | FastAPI, Django, data pipelines, AI integration |
-| 02 | [Rust Systems Engineer](cvs/02-rust-systems-engineer.md) | Tokio, Axum, async services, cryptography, CLI |
-| 03 | [Smart Contract Security Auditor](cvs/03-smart-contract-security-auditor.md) | Solidity auditing, DeFi security, Sherlock, Immunefi |
-| 04 | [Blockchain Security Researcher](cvs/04-blockchain-security-researcher.md) | Vulnerability research, exploit modeling, MEV |
-| 05 | [DeFi / Islamic Finance Protocol Engineer](cvs/05-defi-islamic-finance-protocol-engineer.md) | ERC-4626, Shariah-compliant DeFi, multi-chain |
-| 06 | [Full-Stack Web Developer](cvs/06-fullstack-web-developer.md) | Django, React, Next.js, Vue.js, TypeScript |
-| 07 | [DevOps & Cloud Engineer](cvs/07-devops-cloud-engineer.md) | Docker, CI/CD, GitHub Actions, cloud deployment |
-| 08 | [Security Engineer / Pentester](cvs/08-security-engineer-pentester.md) | Rust pentesting tools, bug bounty, offensive security |
-| 09 | [Blockchain Forensics Specialist](cvs/09-blockchain-forensics-specialist.md) | On-chain tracing, AML, threat intelligence |
-| 10 | [AI-Integrated Backend Engineer](cvs/10-ai-integrated-backend-engineer.md) | LLM APIs, MCP servers, AI-powered pipelines |
+| 01 | [Senior Backend Engineer (Python / Django)](cvs/01-senior-backend-engineer.md) | Django, FastAPI, APIs, databases, system design, reliability |
+| 02 | [Security Engineer (Systems Security & Backend Protection)](cvs/02-security-engineer.md) | Vulnerability analysis, threat modeling, penetration testing, secure architecture |
 
 ## Tech Stack
 
@@ -62,36 +44,36 @@ Requires **Node.js 24+** (see `.nvmrc`).
 
 ## Features
 
-- **10 CV profiles** rendered from markdown with full prose styling
-- **Cover letter generator** with 10 role templates, CV attachment selection, compose/preview tabs, copy-to-clipboard
+- **2 focused CV profiles** rendered from markdown with full prose styling
+- **Cover letter generator** with 3 role templates, CV attachment selection, compose/preview tabs, copy-to-clipboard
+- **Printable resume** optimized for A4 / PDF export
 - **Dark / light theme** with system preference detection and localStorage persistence
 - **Private repository notice** on each CV page
 - **Print-friendly** layout (Ctrl+P hides nav, buttons, notices)
 - **Responsive** design with mobile navigation
-- **SEO** meta tags, Open Graph, structured data
+- **Accessible** — ARIA labels, semantic HTML, keyboard navigation
+- **SEO** — Open Graph, Twitter cards, canonical URL, theme-color
 
 ## Project Structure
 
 ```
 abdulwahed-mansour-cv/
-├── cvs/                          # 10 raw Markdown CVs (ATS-friendly)
-│   ├── 01-python-backend-architect.md
-│   ├── 02-rust-systems-engineer.md
-│   └── ...
+├── cvs/                          # 2 focused Markdown CVs (ATS-friendly)
+│   ├── 01-senior-backend-engineer.md
+│   └── 02-security-engineer.md
 ├── cover-letter.md               # General cover letter template
 ├── site/                         # Vite + React application
-│   ├── public/favicon.svg
+│   ├── public/                   # favicon, robots.txt
 │   ├── src/
 │   │   ├── components/           # Navigation, Footer
 │   │   ├── contexts/             # ThemeContext (dark/light)
 │   │   ├── data/cvs.ts           # CV metadata + markdown loader
-│   │   └── pages/                # Home, CVPage, CoverLetter, NotFound
+│   │   └── pages/                # Home, CVPage, CoverLetter, PrintableCV, NotFound
 │   ├── index.html
 │   ├── vite.config.ts
 │   ├── tailwind.config.js
 │   └── package.json
 ├── .nvmrc                        # Node 24
-├── PLAN.md                       # Design specification
 └── README.md
 ```
 
@@ -105,18 +87,11 @@ npm run build
 # Upload dist/ to any static host
 ```
 
-**Hugging Face Spaces** — push `dist/` contents to a static Space:
-```bash
-git clone https://huggingface.co/spaces/abdulwahed-sweden/abdulwahed-cv /tmp/hf
-cp -r site/dist/* /tmp/hf/
-cd /tmp/hf && git add -A && git commit -m "Deploy" && git push
-```
-
 ## Contact
 
 **Abdulwahed Mansour** — Stockholm, Sweden
 
-- abdulwahed.sweden@gmail.com
+- abdulwahed.mansour@gmail.com
 - [linkedin.com/in/abdulwahed-sweden](https://www.linkedin.com/in/abdulwahed-sweden/)
 - [github.com/abdulwahed-sweden](https://github.com/abdulwahed-sweden)
 
