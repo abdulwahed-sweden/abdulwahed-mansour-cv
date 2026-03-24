@@ -21,8 +21,8 @@ Brings a security-conscious mindset and a strong sense of ownership, with a pref
 | Area | Technologies |
 |------|-------------|
 | Languages | Python, TypeScript (Node.js), Rust, Bash, SQL |
-| Backend | Django, FastAPI, REST APIs, Microservices |
-| Databases | PostgreSQL, MySQL, SQLite, Redis — schema design, query optimization, migrations |
+| Backend | Django, FastAPI, DRF, Celery, REST APIs, Microservices |
+| Databases | PostgreSQL, MySQL, SQLite, Redis, Elasticsearch — schema design, query optimization, migrations |
 | DevOps & Cloud | AWS, GCP, Azure (core services) — Docker, Terraform (basic–intermediate), GitHub Actions CI/CD |
 | Monitoring | Logging, debugging, performance tuning, system observability |
 | Security | Application security, threat modeling, secure system design |
@@ -59,6 +59,15 @@ Worked on multiple backend and infrastructure-focused projects, building and mai
 ---
 
 ## Selected Projects
+
+### Hyra — Rental Queue Management Engine `NEW`
+*Python 3.12, Django 4.2, DRF, PostgreSQL, Elasticsearch, Redis, Celery, Docker*
+
+- Designed a queue processing engine for the Swedish rental housing market (bostadskö) with atomic transactions, row-level locking, and three configurable ranking algorithms (points, first-come, lottery)
+- Built eligibility pipeline with six priority-ordered rules (income verification, credit scoring, BankID, Kronofogden debt checks) — deterministic, auditable, and independently testable
+- Implemented Elasticsearch full-text search with fuzzy matching, weighted fields, and aggregations — with silent PostgreSQL ILIKE fallback ensuring zero downtime
+- Built async webhook delivery system with HMAC-SHA256 signing and 7-level exponential backoff retry (5 min → 7 days)
+- Redis-cached stats endpoint with graceful degradation. Full Docker Compose stack (PostgreSQL, Redis, ES, Celery). 59 automated tests, CI/CD pipeline
 
 ### Django Auth Platform — Production-Ready Backend System
 *Python 3.12, Django, DRF, PostgreSQL, Docker, GitHub Actions*
